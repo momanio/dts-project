@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-ink: var(--primary-ink);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-accent: var(--accent);
+  --color-deep: #123d3a;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-arabic: 'Cairo', sans-serif;
+}
+:root {
+  color-scheme: light;
+  --primary: #2e7167;
+  --primary-hover: #20584f;
+  --primary-ink: #ffffff;
+  --canvas: #faf9f5;
+  --surface: #ffffff;
+  --ink: #193c3a;
+  --muted: #5e706b;
+  --line: #dce4de;
+  --soft: #edf2ec;
+  --accent: #d6b888;
+}
+.dark {
+  color-scheme: dark;
+  --primary: #a6d6c4;
+  --primary-hover: #c1e7d8;
+  --primary-ink: #12332e;
+  --canvas: #111f1d;
+  --surface: #1a2c28;
+  --ink: #edf3ec;
+  --muted: #b3c5ba;
+  --line: #354b41;
+  --soft: #22372f;
+  --accent: #e0c99d;
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+  }
+  body {
+    @apply m-0 bg-canvas font-sans text-ink antialiased;
+  }
+  html[lang='ar'] body {
+    @apply font-arabic;
+  }
+  html[lang='ar'] .font-display {
+    @apply font-arabic font-medium;
+    line-height: 1.5;
+    letter-spacing: -0.045em;
+  }
+  html[lang='ar'] .font-display em {
+    font-style: normal;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  summary {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 5px;
+  }
+  ::selection {
+    background: #bedacc;
+    color: #123d3a;
+  }
+  input,
+  select,
+  textarea {
+    min-width: 0;
+  }
+  [id] {
+    scroll-margin-top: 1rem;
+  }
+}
+@layer components {
+  .eyebrow {
+    @apply text-[10px] font-semibold tracking-[0.2em] text-primary uppercase sm:text-xs;
+  }
+  html[lang='ar'] .eyebrow {
+    letter-spacing: 0;
+    font-size: 0.8rem;
+  }
+  .section-title {
+    @apply font-display text-[clamp(2.5rem,4.5vw,4.25rem)] leading-[1.08] tracking-[-0.035em];
+  }
+  .field {
+    @apply w-full rounded-xl border border-line bg-canvas px-4 py-3 text-sm text-ink transition-colors placeholder:text-muted focus:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary;
+  }
+  .field[aria-invalid='true'] {
+    @apply border-red-600;
+  }
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

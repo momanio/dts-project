@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2e7167" />
+    <meta
+      name="description"
+      content="اكتشف تجربة أكثر هدوءًا للعناية بأسنانك في لوما، عبدون، عمّان. تعرّف على طبيبتك وخدماتنا واطلب موعدك."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="لوما لطب الأسنان | عناية مدروسة في عمّان" />
+    <meta
+      property="og:description"
+      content="عناية تستحقها. وابتسامة تحبّها. اكتشف لوما لطب الأسنان في عمّان."
+    />
+    <meta property="og:locale" content="ar_JO" />
+    <meta property="og:image" content="/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="لوما لطب الأسنان | عناية مدروسة في عمّان" />
+    <meta
+      name="twitter:description"
+      content="عناية تستحقها. وابتسامة تحبّها. اكتشف لوما لطب الأسنان في عمّان."
+    />
+    <meta name="twitter:image" content="/social-card.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <title>لوما لطب الأسنان | عناية مدروسة في عمّان</title>
+    <script>
+      try {
+        var theme = localStorage.getItem('luma-theme')
+        if (theme === 'dark' || (!theme && matchMedia('(prefers-color-scheme: dark)').matches))
+          document.documentElement.classList.add('dark')
+        var lang = localStorage.getItem('luma-language')
+        if (lang === 'en') {
+          document.documentElement.lang = 'en'
+          document.documentElement.dir = 'ltr'
+        }
+      } catch (_) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
