@@ -39,7 +39,7 @@ export function Reviews() {
           aria-label={t('nav.reviews')}
           className="rounded-3xl border border-line bg-surface/80 p-7 sm:p-10"
         >
-          <Quote className="mb-6 size-9 text-primary/40" strokeWidth={1} aria-hidden="true" />
+          <Quote className="mb-6 size-9 text-accent" strokeWidth={1} aria-hidden="true" />
           <div aria-live="polite" aria-atomic="true" className="min-h-62">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -92,7 +92,7 @@ export function Reviews() {
                   <span
                     className={cn(
                       'h-1.5 rounded-full transition-[width,background-color]',
-                      dot === index ? 'w-6 bg-primary' : 'w-1.5 bg-line',
+                      dot === index ? 'w-6 bg-primary' : 'w-1.5 bg-control-line',
                     )}
                   />
                 </button>
@@ -103,7 +103,7 @@ export function Reviews() {
                 type="button"
                 onClick={() => change(-1)}
                 aria-label={t('common.previous')}
-                className="flex size-11 items-center justify-center rounded-full border border-line transition-colors hover:bg-soft"
+                className="flex size-11 items-center justify-center rounded-full border border-control-line transition-colors hover:bg-soft"
               >
                 <ArrowLeft className="size-4 rtl:-scale-x-100" aria-hidden="true" />
               </button>

@@ -13,36 +13,48 @@
   --color-line: var(--line);
   --color-soft: var(--soft);
   --color-accent: var(--accent);
-  --color-deep: #123d3a;
+  --color-deep: var(--deep);
+  --color-deep-ink: var(--deep-ink);
+  --color-deep-muted: var(--deep-muted);
+  --color-control-line: var(--muted);
+  --color-focus-ring: var(--focus-ring);
+  --color-whatsapp: #128c7e;
+  --color-whatsapp-hover: #075e54;
   --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-arabic: 'Cairo', sans-serif;
 }
 :root {
   color-scheme: light;
-  --primary: #2e7167;
-  --primary-hover: #20584f;
+  --primary: #a44732;
+  --primary-hover: #843724;
   --primary-ink: #ffffff;
-  --canvas: #faf9f5;
+  --canvas: #fbf7f2;
   --surface: #ffffff;
-  --ink: #193c3a;
-  --muted: #5e706b;
-  --line: #dce4de;
-  --soft: #edf2ec;
-  --accent: #d6b888;
+  --ink: #302330;
+  --muted: #71646c;
+  --line: #e5dad4;
+  --soft: #f3e8e0;
+  --accent: #e8b59b;
+  --deep: #302330;
+  /* Deep anchors stay dark in both themes, so their foregrounds stay light. */
+  --deep-ink: #faf2ed;
+  --deep-muted: #c5b5be;
+  --focus-ring: var(--primary);
 }
 .dark {
   color-scheme: dark;
-  --primary: #a6d6c4;
-  --primary-hover: #c1e7d8;
-  --primary-ink: #12332e;
-  --canvas: #111f1d;
-  --surface: #1a2c28;
-  --ink: #edf3ec;
-  --muted: #b3c5ba;
-  --line: #354b41;
-  --soft: #22372f;
-  --accent: #e0c99d;
+  --primary: #f0ab8d;
+  --primary-hover: #f7c2aa;
+  --primary-ink: #291b21;
+  --canvas: #191419;
+  --surface: #251d25;
+  --ink: #faf2ed;
+  --muted: #c5b5be;
+  --line: #493943;
+  --soft: #322630;
+  --accent: #deb8a5;
+  --deep: #211820;
 }
 @layer base {
   html {
@@ -76,12 +88,12 @@
     cursor: pointer;
   }
   :focus-visible {
-    outline: 3px solid var(--primary);
+    outline: 3px solid var(--focus-ring);
     outline-offset: 5px;
   }
   ::selection {
-    background: #bedacc;
-    color: #123d3a;
+    background: var(--accent);
+    color: var(--deep);
   }
   input,
   select,
@@ -93,6 +105,9 @@
   }
 }
 @layer components {
+  .on-deep {
+    --focus-ring: var(--accent);
+  }
   .eyebrow {
     @apply text-[10px] font-semibold tracking-[0.2em] text-primary uppercase sm:text-xs;
   }
@@ -104,10 +119,10 @@
     @apply font-display text-[clamp(2.5rem,4.5vw,4.25rem)] leading-[1.08] tracking-[-0.035em];
   }
   .field {
-    @apply w-full rounded-xl border border-line bg-canvas px-4 py-3 text-sm text-ink transition-colors placeholder:text-muted focus:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-primary;
+    @apply w-full rounded-xl border border-control-line bg-canvas px-4 py-3 text-sm text-ink transition-colors placeholder:text-muted focus:border-primary focus:outline-2 focus:outline-offset-2 focus:outline-focus-ring;
   }
   .field[aria-invalid='true'] {
-    @apply border-red-600;
+    @apply border-red-600 dark:border-red-400;
   }
 }
 @keyframes slide-in {

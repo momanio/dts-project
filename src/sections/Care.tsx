@@ -83,7 +83,7 @@ export function About() {
       <Container className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
         <Reveal className="relative mx-auto w-full max-w-md">
           <div
-            className="absolute -start-3 top-3 h-full w-full rounded-3xl border border-primary/25"
+            className="absolute -start-3 top-3 h-full w-full rounded-3xl border border-accent/60"
             aria-hidden="true"
           />
           <div className="relative overflow-hidden rounded-3xl bg-soft">
@@ -96,9 +96,9 @@ export function About() {
               loading="lazy"
               className="aspect-[4/5] w-full object-cover object-top"
             />
-            <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/30 bg-white/90 px-5 py-4 text-deep backdrop-blur-md">
+            <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-line bg-surface/95 px-5 py-4 text-ink backdrop-blur-md">
               <p className="font-display text-2xl font-semibold">{t('clinic.doctorName')}</p>
-              <p className="mt-1 text-xs text-[#536b63]">{t('clinic.doctorRole')}</p>
+              <p className="mt-1 text-xs text-muted">{t('clinic.doctorRole')}</p>
             </div>
           </div>
           <div className="absolute -end-4 top-7 flex size-23 -rotate-6 flex-col items-center justify-center gap-1 rounded-full border-4 border-canvas bg-primary p-3 text-center text-primary-ink">
@@ -166,15 +166,17 @@ export function Services() {
                     window.history.replaceState(null, '', '#contact')
                   }}
                   className={cn(
-                    'group relative flex h-full min-h-65 flex-col overflow-hidden rounded-3xl border p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg',
-                    featured ? 'border-deep bg-deep text-[#f5f6ed]' : 'border-line bg-surface/80',
+                    'group relative flex h-full min-h-65 flex-col overflow-hidden rounded-3xl border p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-deep/10',
+                    featured
+                      ? 'on-deep border-deep bg-deep text-deep-ink focus-visible:outline-offset-[-5px]'
+                      : 'border-line bg-surface/80',
                   )}
                 >
                   <div className="flex items-center justify-between">
                     <span
                       className={cn(
                         'flex size-11 items-center justify-center rounded-xl',
-                        featured ? 'bg-white/10' : 'bg-soft text-primary',
+                        featured ? 'bg-deep-ink/10' : 'bg-soft text-primary',
                       )}
                     >
                       <Icon className="size-5" strokeWidth={1.4} aria-hidden="true" />
@@ -182,7 +184,7 @@ export function Services() {
                     <span
                       className={cn(
                         'flex size-8 items-center justify-center rounded-full border transition-transform group-hover:rotate-12',
-                        featured ? 'border-white/25' : 'border-line',
+                        featured ? 'border-deep-ink/25' : 'border-line',
                       )}
                     >
                       <DirectionArrow />
@@ -190,8 +192,8 @@ export function Services() {
                   </div>
                   {featured && (
                     <>
-                      <ToothMark className="pointer-events-none absolute -end-4 bottom-6 size-52 -rotate-12 text-white/10" />
-                      <p className="mt-7 text-[9px] tracking-[0.18em] text-[#b8d4c9]">
+                      <ToothMark className="pointer-events-none absolute -end-4 bottom-6 size-52 -rotate-12 text-accent/10" />
+                      <p className="mt-7 text-[9px] tracking-[0.18em] text-accent">
                         {t('services.checkup.detail')}
                       </p>
                     </>
@@ -207,7 +209,7 @@ export function Services() {
                   <p
                     className={cn(
                       'relative max-w-sm text-xs leading-6',
-                      featured ? 'text-[#d3e1d8]' : 'text-muted',
+                      featured ? 'text-deep-muted' : 'text-muted',
                     )}
                   >
                     {t(`services.${service}.description`)}
@@ -268,11 +270,11 @@ function Counter({ value, suffix, label }: { value: number; suffix?: string; lab
         <span ref={ref} aria-hidden="true">
           {new Intl.NumberFormat(i18n.language).format(value)}
         </span>
-        <span aria-hidden="true" className="text-[#bad6c7]">
+        <span aria-hidden="true" className="text-accent">
           {suffix}
         </span>
       </p>
-      <p className="mt-3 text-xs text-[#ccdbd0]">{label}</p>
+      <p className="mt-3 text-xs text-deep-muted">{label}</p>
     </div>
   )
 }
@@ -308,7 +310,7 @@ export function WhyChooseUs() {
               height={1000}
               className="aspect-[5/6] max-h-[570px] w-full rounded-t-[9rem] rounded-b-3xl object-cover"
             />
-            <div className="absolute inset-x-6 bottom-6 flex items-center gap-3 rounded-2xl bg-surface/95 p-5 shadow-sm backdrop-blur">
+            <div className="absolute inset-x-6 bottom-6 flex items-center gap-3 rounded-2xl bg-surface/95 p-5 shadow-sm shadow-deep/10 backdrop-blur">
               <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-soft text-primary">
                 <Check className="size-5" aria-hidden="true" />
               </span>
@@ -316,13 +318,13 @@ export function WhyChooseUs() {
             </div>
           </Reveal>
         </div>
-        <Reveal className="mt-16 rounded-3xl bg-deep px-5 py-10 text-[#f4f4e9] sm:px-12">
-          <div className="grid grid-cols-3 gap-3 divide-x divide-white/20 rtl:divide-x-reverse">
+        <Reveal className="mt-16 rounded-3xl on-deep bg-deep px-5 py-10 text-deep-ink sm:px-12">
+          <div className="grid grid-cols-3 gap-3 divide-x divide-deep-ink/20 rtl:divide-x-reverse">
             <Counter value={clinic.stats.experience} suffix="+" label={t('why.experience')} />
             <Counter value={clinic.stats.patients} suffix="+" label={t('why.patients')} />
             <Counter value={clinic.stats.rating} suffix="/5" label={t('why.rating')} />
           </div>
-          <p className="mt-7 text-center text-[10px] text-[#bed0c5]">{t('why.note')}</p>
+          <p className="mt-7 text-center text-[10px] text-deep-muted">{t('why.note')}</p>
         </Reveal>
       </Container>
     </Section>

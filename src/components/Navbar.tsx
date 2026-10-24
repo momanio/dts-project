@@ -48,7 +48,7 @@ export function Navbar() {
       <header
         className={cn(
           'sticky top-0 z-40 border-b border-line/70 bg-canvas/90 backdrop-blur-xl transition-[box-shadow] duration-300',
-          scrolled && 'shadow-sm',
+          scrolled && 'shadow-sm shadow-deep/10',
         )}
       >
         <Container
@@ -117,9 +117,9 @@ export function Navbar() {
         onClick={(e) => {
           if (e.target === e.currentTarget) closeMenu()
         }}
-        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-black/30 p-0 text-ink backdrop:backdrop-blur-sm"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-deep/40 p-0 text-ink backdrop:backdrop-blur-sm"
       >
-        <div className="ms-auto flex h-full w-[min(88vw,400px)] flex-col overflow-y-auto bg-canvas p-7 shadow-2xl motion-safe:animate-[slide-in_0.25s_ease-out]">
+        <div className="ms-auto flex h-full w-[min(88vw,400px)] flex-col overflow-y-auto bg-canvas p-7 shadow-2xl shadow-deep/20 motion-safe:animate-[slide-in_0.25s_ease-out]">
           <div className="mb-10 flex items-center justify-between gap-3">
             <Logo />
             <button
@@ -152,7 +152,7 @@ export function Navbar() {
           <a
             href="#contact"
             onClick={closeMenu}
-            className="mt-8 rounded-full bg-primary px-5 py-4 text-center text-sm font-semibold text-primary-ink"
+            className="mt-8 rounded-full bg-primary px-5 py-4 text-center text-sm font-semibold text-primary-ink transition-colors hover:bg-primary-hover"
           >
             {t('common.book')}
           </a>

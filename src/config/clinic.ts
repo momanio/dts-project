@@ -9,7 +9,7 @@ export const clinic: ClinicConfig = {
     ar: "عناية تستحقها. وابتسامة تحبّها.",
   },
   phone: "+96265550140",
-  whatsapp: "+962790000140",
+  whatsapp: "+962796854546",
   email: "hello@example.com",
   website: "https://example.com",
   address: {

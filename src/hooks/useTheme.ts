@@ -12,6 +12,12 @@ export function useTheme() {
   })
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
+    const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+    if (themeColor) {
+      themeColor.content = getComputedStyle(document.documentElement)
+        .getPropertyValue('--canvas')
+        .trim()
+    }
   }, [theme])
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: dark)')

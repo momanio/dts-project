@@ -341,7 +341,7 @@ export default function Contact() {
             />
           ) : (
             <div className="relative flex min-h-64 items-center justify-center bg-[url('/images/map.svg')] bg-cover bg-center p-6">
-              <div className="relative rounded-2xl border border-line bg-surface/95 px-8 py-6 text-center shadow-lg backdrop-blur">
+              <div className="relative rounded-2xl border border-line bg-surface/95 px-8 py-6 text-center shadow-lg shadow-deep/10 backdrop-blur">
                 <MapPin
                   className="mx-auto mb-3 size-6 text-primary"
                   strokeWidth={1.5}

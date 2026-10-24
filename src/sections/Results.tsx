@@ -22,7 +22,7 @@ export default function Results() {
         </div>
         <Reveal>
           <div
-            className="relative isolate aspect-[4/3] overflow-hidden rounded-3xl bg-[#e6c1aa]"
+            className="relative isolate aspect-[4/3] overflow-hidden rounded-3xl bg-soft"
             dir="ltr"
           >
             <img
@@ -42,17 +42,17 @@ export default function Results() {
               className="absolute inset-0 h-full w-full object-cover"
               style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
             />
-            <span className="absolute start-5 top-5 rounded-full bg-white/95 px-4 py-2 text-xs font-medium text-deep">
+            <span className="absolute start-5 top-5 rounded-full bg-surface/95 px-4 py-2 text-xs font-medium text-ink">
               {t('results.after')}
             </span>
-            <span className="absolute end-5 top-5 rounded-full bg-white/95 px-4 py-2 text-xs font-medium text-deep">
+            <span className="absolute end-5 top-5 rounded-full bg-surface/95 px-4 py-2 text-xs font-medium text-ink">
               {t('results.before')}
             </span>
             <div
-              className="pointer-events-none absolute inset-y-0 w-0.5 bg-white shadow-xl"
+              className="pointer-events-none absolute inset-y-0 w-0.5 bg-deep-ink shadow-xl shadow-deep/20"
               style={{ left: `${position}%` }}
             >
-              <span className="absolute top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white/70 bg-primary text-primary-ink shadow-lg">
+              <span className="absolute top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-deep bg-primary text-primary-ink shadow-lg shadow-deep/20">
                 <MoveHorizontal className="size-5" aria-hidden="true" />
               </span>
             </div>
@@ -64,7 +64,7 @@ export default function Results() {
               onChange={(event) => setPosition(Number(event.target.value))}
               aria-label={t('results.slider')}
               aria-valuetext={`${position}% ${t('results.after')}`}
-              className="absolute inset-0 h-full w-full cursor-ew-resize appearance-none bg-transparent opacity-0 focus:opacity-100 focus:outline-offset-[-6px] [&::-webkit-slider-thumb]:h-full [&::-webkit-slider-thumb]:w-1 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-transparent"
+              className="absolute inset-0 h-full w-full cursor-ew-resize appearance-none bg-transparent opacity-0 focus:opacity-100 focus:outline-deep focus:outline-offset-[-6px] [&::-webkit-slider-thumb]:h-full [&::-webkit-slider-thumb]:w-1 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-transparent"
             />
           </div>
           <p className="mt-4 flex items-center justify-center gap-2 text-xs text-muted">

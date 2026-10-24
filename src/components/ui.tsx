@@ -14,9 +14,9 @@ function buttonStyle({ variant = 'primary', className }: ButtonStyle) {
   return cn(
     'inline-flex min-h-12 items-center justify-center gap-3 rounded-full px-6 py-3 text-sm font-semibold transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-60',
     variant === 'primary' &&
-      'bg-primary text-primary-ink shadow-sm hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/10',
-    variant === 'secondary' && 'border border-line bg-transparent text-ink hover:bg-soft',
-    variant === 'light' && 'bg-[#f3f5eb] text-deep hover:bg-white',
+      'bg-primary text-primary-ink shadow-sm shadow-deep/10 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/10',
+    variant === 'secondary' && 'border border-control-line bg-transparent text-ink hover:bg-soft',
+    variant === 'light' && 'bg-deep-ink text-deep hover:bg-white',
     className,
   )
 }
@@ -131,7 +131,7 @@ export function Stars({ rating = 5, className }: { rating?: number; className?: 
     <span
       role="img"
       aria-label={t('common.stars', { count: rating })}
-      className={cn('inline-flex gap-1 text-[#9b742e] dark:text-accent', className)}
+      className={cn('inline-flex gap-1 text-primary', className)}
     >
       {Array.from({ length: 5 }, (_, i) => (
         <Star key={i} className="size-3.5 fill-current" aria-hidden="true" />
@@ -161,13 +161,13 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
       aria-label={`${t('clinic.name')} — ${t('nav.home')}`}
       className={cn(
         'inline-flex shrink-0 items-center gap-2.5',
-        inverse ? 'text-[#edf3ec]' : 'text-ink',
+        inverse ? 'text-deep-ink' : 'text-ink',
       )}
     >
       <span
         className={cn(
           'flex size-11 items-center justify-center rounded-full border',
-          inverse ? 'border-white/30' : 'border-primary/40',
+          inverse ? 'border-deep-ink/30' : 'border-primary/40',
         )}
       >
         <ToothMark className="size-8" />

@@ -17,7 +17,7 @@ export function Hero() {
     >
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute -start-40 top-12 size-[600px] rounded-full bg-[#dae8d7]/35 blur-[100px] dark:bg-primary/5"
+        className="pointer-events-none absolute -start-40 top-12 size-[600px] rounded-full bg-accent/15 blur-[100px] dark:bg-accent/5"
         animate={reduced ? undefined : { x: [0, 30, 0], y: [0, 25, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -84,7 +84,7 @@ export function Hero() {
         </Reveal>
         <Reveal delay={0.15} className="relative mx-auto w-full max-w-xl px-3 pb-10 lg:px-0">
           <div
-            className="absolute -end-4 top-8 h-[90%] w-[90%] rounded-t-[12rem] rounded-b-[2rem] border border-primary/20 sm:-end-5"
+            className="absolute -end-4 top-8 h-[90%] w-[90%] rounded-t-[12rem] rounded-b-[2rem] border border-accent/60 sm:-end-5"
             aria-hidden="true"
           />
           <div className="relative h-[420px] overflow-hidden rounded-t-[11rem] rounded-b-3xl bg-soft sm:h-[500px] lg:h-[570px]">
@@ -97,8 +97,8 @@ export function Hero() {
               fetchPriority="high"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#123d3a]/35 via-transparent to-transparent" />
-            <div className="absolute start-6 top-6 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-2 text-[9px] font-semibold tracking-widest text-deep backdrop-blur-sm">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-15% to-transparent to-60%" />
+            <div className="absolute start-6 top-6 flex items-center gap-1.5 rounded-full bg-surface/95 px-3 py-2 text-[9px] font-semibold tracking-widest text-ink backdrop-blur-sm">
               <MapPin className="size-3" aria-hidden="true" />
               {t('hero.location')}
             </div>
@@ -116,7 +116,7 @@ export function Hero() {
             </div>
           </div>
           <div className="absolute -end-1 bottom-0 flex max-w-[90%] items-center gap-3 rounded-2xl border border-line/70 bg-surface/95 p-4 shadow-xl shadow-deep/5 backdrop-blur-md sm:-end-5">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#f5eadd] text-[#7d5935]">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-soft text-primary">
               <Heart className="size-5" strokeWidth={1.5} aria-hidden="true" />
             </span>
             <div>
