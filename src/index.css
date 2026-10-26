@@ -124,6 +124,240 @@
   .field[aria-invalid='true'] {
     @apply border-red-600 dark:border-red-400;
   }
+  .doctor-about {
+    /* Keep this outer scroll target and its ancestors free of overflow/transform. */
+    --doctor-nav-height: 4.625rem;
+    position: relative;
+    background: var(--canvas);
+  }
+  .doctor-about__stage {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+  }
+  .doctor-about__layout {
+    display: grid;
+    align-items: center;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1480px;
+    margin-inline: auto;
+    padding: 4rem clamp(1.25rem, 4vw, 4rem);
+  }
+  .doctor-scene {
+    position: relative;
+    isolation: isolate;
+    container-type: inline-size;
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 1 / 1.05;
+    margin-inline: auto;
+    pointer-events: none;
+  }
+  .doctor-scene::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 4% 0;
+    background: radial-gradient(ellipse at 50% 50%, var(--soft), transparent 68%);
+  }
+  .doctor-scene__word {
+    position: absolute;
+    z-index: 1;
+    inset-inline-start: 0;
+    top: 0;
+    width: 71%;
+    color: color-mix(in srgb, var(--primary) 32%, var(--canvas));
+    font-family: var(--font-display);
+    font-size: 23cqw;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.055em;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  html[lang='ar'] .doctor-scene__word {
+    font-family: var(--font-arabic);
+    font-size: 19cqw;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+  .doctor-scene__tooth {
+    position: absolute;
+    z-index: 2;
+    inset-inline-end: 0;
+    top: 14%;
+    width: 64%;
+    pointer-events: none;
+  }
+  .doctor-scene__tooth svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 16px 14px color-mix(in srgb, var(--deep) 7%, transparent));
+  }
+  .doctor-scene__portrait {
+    position: absolute;
+    z-index: 3;
+    inset-inline-start: 12%;
+    top: 24%;
+    width: 53%;
+    pointer-events: none;
+  }
+  .doctor-scene__frame {
+    border-radius: 48% 48% 9% 9% / 31% 31% 7% 7%;
+    border: 1px solid var(--line);
+    padding: 7px;
+    background: var(--surface);
+    box-shadow: 0 24px 44px -28px color-mix(in srgb, var(--deep) 40%, transparent);
+  }
+  .doctor-scene__frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: top;
+    border-radius: inherit;
+  }
+  .doctor-scene__smile {
+    position: absolute;
+    z-index: 4;
+    inset-inline-start: 3%;
+    bottom: 4%;
+    width: 48%;
+    pointer-events: none;
+  }
+  .doctor-scene__smile svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  [dir='rtl'] .doctor-scene__smile svg {
+    transform: scaleX(-1);
+  }
+  .doctor-about__details {
+    position: relative;
+    z-index: 5;
+    min-width: 0;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+  .doctor-about__heading {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 4.3vw, 4rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  .doctor-about__heading em {
+    color: var(--primary);
+  }
+  .doctor-about__identity {
+    margin-block: 1.5rem 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .doctor-about__name {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .doctor-about__bio {
+    font-size: 0.875rem;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+  .doctor-about__credentials {
+    display: grid;
+    gap: 0.375rem;
+    margin-block: 1rem;
+  }
+  .doctor-about__quote {
+    margin-block: 1.25rem;
+    padding-inline-start: 1rem;
+    border-inline-start: 2px solid var(--accent);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--primary);
+  }
+  .doctor-about__booking {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .doctor-about__note {
+    margin-top: 1rem;
+    font-size: 0.625rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  html[lang='ar'] .doctor-about__heading,
+  html[lang='ar'] .doctor-about__name,
+  html[lang='ar'] .doctor-about__quote {
+    font-family: var(--font-arabic);
+    letter-spacing: 0;
+  }
+  html[lang='ar'] .doctor-about__heading {
+    font-size: clamp(2.5rem, 3.7vw, 3.5rem);
+    line-height: 1.35;
+  }
+  html[lang='ar'] .doctor-about__heading em {
+    font-style: normal;
+  }
+  html[lang='ar'] .doctor-about__name {
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+  html[lang='ar'] .doctor-about__quote {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  @media (min-width: 900px) {
+    .doctor-about__layout {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+  }
+  /* One shared media-query result controls the CSS pin and every Motion transform.
+     Small/short viewports and live reduced-motion changes keep ordinary document flow. */
+  .doctor-about[data-parallax='true'] {
+    height: 240vh;
+  }
+  .doctor-about[data-parallax='true'] .doctor-about__stage {
+    position: sticky;
+    top: var(--doctor-nav-height);
+    height: calc(100svh - var(--doctor-nav-height));
+  }
+  .doctor-about[data-parallax='true'] .doctor-about__layout {
+    height: 100%;
+    padding-block: 1.5rem;
+  }
+  .doctor-about[data-parallax='true'] .doctor-scene {
+    height: min(100%, 704px);
+    aspect-ratio: auto;
+  }
+  .doctor-about[data-parallax='true'] .doctor-scene__portrait {
+    max-width: 390px;
+  }
+  @media (max-width: 639px) {
+    .doctor-about__layout {
+      padding-block: 3rem;
+      gap: 1.5rem;
+    }
+    .doctor-scene__frame {
+      padding: 4px;
+    }
+    .doctor-about__heading {
+      font-size: 3rem;
+    }
+  }
 }
 @keyframes slide-in {
   from {

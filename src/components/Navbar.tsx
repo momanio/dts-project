@@ -53,7 +53,7 @@ export function Navbar() {
       >
         <Container
           className={cn(
-            'flex items-center justify-between gap-4 transition-[height] duration-300',
+            'flex items-center justify-between gap-4 transition-[height] duration-300 max-[359px]:gap-2 max-[359px]:px-3 max-[359px]:[&>a]:gap-2 max-[359px]:[&>a>span:first-child]:size-9 max-[359px]:[&>a>span:last-child]:text-base',
             scrolled ? 'h-18' : 'h-22',
           )}
         >

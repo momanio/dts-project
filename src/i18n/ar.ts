@@ -61,6 +61,9 @@ export const ar = {
     demo: "اعتمادات توضيحية · تخضع لتأكيد العيادة",
   },
   about: {
+    sceneWord: "ابتسامة",
+    sceneTitle: "وراء كل",
+    sceneAccent: "ابتسامة.",
     eyebrow: "وراء كل ابتسامة، حكاية",
     title: "طبيبك.",
     accent: "وشريكك في العناية.",

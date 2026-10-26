@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { animate, useInView, useReducedMotion } from 'motion/react'
+import { animate, useInView, useReducedMotion, useScroll } from 'motion/react'
 import {
   Award,
   BadgeCheck,
@@ -31,6 +31,8 @@ import {
   ToothMark,
 } from '../components/ui'
 import { ClinicImage } from '../components/ClinicImage'
+import { DoctorPortrait } from '../components/DoctorPortrait'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 import { cn } from '../lib/utils'
 
 const serviceIcons: Record<ServiceId, LucideIcon> = {
@@ -78,55 +80,56 @@ export function TrustBar() {
 
 export function About() {
   const { t } = useTranslation()
+  const sectionRef = useRef<HTMLElement>(null)
+  const parallax = useMediaQuery(
+    '(min-width: 1100px) and (min-height: 800px) and (prefers-reduced-motion: no-preference)',
+  )
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end'],
+  })
+
   return (
-    <Section id="about">
-      <Container className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
-        <Reveal className="relative mx-auto w-full max-w-md">
-          <div
-            className="absolute -start-3 top-3 h-full w-full rounded-3xl border border-accent/60"
-            aria-hidden="true"
-          />
-          <div className="relative overflow-hidden rounded-3xl bg-soft">
-            <ClinicImage
-              src={clinic.images.doctor}
-              fallback="/images/doctor.svg"
-              alt={t('about.imageAlt')}
-              width={800}
-              height={1000}
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover object-top"
-            />
-            <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-line bg-surface/95 px-5 py-4 text-ink backdrop-blur-md">
-              <p className="font-display text-2xl font-semibold">{t('clinic.doctorName')}</p>
-              <p className="mt-1 text-xs text-muted">{t('clinic.doctorRole')}</p>
+    <section
+      ref={sectionRef}
+      id="about"
+      aria-labelledby="about-title"
+      className="doctor-about"
+      data-parallax={parallax}
+    >
+      <div className="doctor-about__stage">
+        <div className="doctor-about__layout">
+          <DoctorPortrait progress={scrollYProgress} animated={parallax} />
+          <div className="doctor-about__details">
+            <p className="eyebrow">{t('about.eyebrow')}</p>
+            <h2 id="about-title" className="doctor-about__heading">
+              {t('about.sceneTitle')}
+              <br />
+              <em>{t('about.sceneAccent')}</em>
+            </h2>
+            <div className="doctor-about__identity">
+              <h3 className="doctor-about__name">{t('clinic.doctorName')}</h3>
+              <p className="text-xs leading-6 text-muted">{t('clinic.doctorRole')}</p>
             </div>
-          </div>
-          <div className="absolute -end-4 top-7 flex size-23 -rotate-6 flex-col items-center justify-center gap-1 rounded-full border-4 border-canvas bg-primary p-3 text-center text-primary-ink">
-            <Heart className="size-5" strokeWidth={1.4} aria-hidden="true" />
-            <span className="text-[9px] leading-4">{t('about.badge')}</span>
-          </div>
-          <p className="mt-6 text-center text-[10px] text-muted">{t('about.note')}</p>
-        </Reveal>
-        <div>
-          <SectionHeading section="about" />
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-sm leading-8 text-muted">{t('clinic.doctorBio')}</p>
-            <ul className="mt-6 space-y-3">
+            <p className="doctor-about__bio">{t('clinic.doctorBio')}</p>
+            <ul className="doctor-about__credentials">
               {clinic.doctor.qualifications.map((_, index) => (
                 <li key={index} className="flex items-start gap-3 text-xs leading-6">
-                  <BadgeCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <BadgeCheck className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
                   {t(`clinic.qualifications.${index}`)}
                 </li>
               ))}
             </ul>
-            <blockquote className="my-8 border-s-2 border-accent ps-5 font-display text-2xl leading-relaxed text-primary">
-              “{t('clinic.doctorQuote')}”
-            </blockquote>
-            <BookLink />
-          </Reveal>
+            <blockquote className="doctor-about__quote">“{t('clinic.doctorQuote')}”</blockquote>
+            <div className="doctor-about__booking">
+              <BookLink />
+              <p className="text-xs text-primary">{t('about.badge')}</p>
+            </div>
+            <p className="doctor-about__note">{t('about.note')}</p>
+          </div>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   )
 }
 
@@ -156,13 +159,11 @@ export function Services() {
                     window.dispatchEvent(
                       new CustomEvent<ServiceId>('luma:service', { detail: service }),
                     )
-                    document
-                      .getElementById('contact')
-                      ?.scrollIntoView({
-                        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-                          ? 'instant'
-                          : 'smooth',
-                      })
+                    document.getElementById('contact')?.scrollIntoView({
+                      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                        ? 'instant'
+                        : 'smooth',
+                    })
                     window.history.replaceState(null, '', '#contact')
                   }}
                   className={cn(

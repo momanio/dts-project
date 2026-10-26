@@ -62,6 +62,9 @@ export const en = {
     demo: "Illustrative credentials · subject to clinic verification",
   },
   about: {
+    sceneWord: "SMILE",
+    sceneTitle: "Behind every",
+    sceneAccent: "smile.",
     eyebrow: "A PERSON BEHIND EVERY SMILE",
     title: "Your dentist.",
     accent: "Your partner in care.",
